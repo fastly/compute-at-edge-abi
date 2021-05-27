@@ -1,0 +1,52 @@
+(typename $fastly_status
+  (enum (@witx tag u32)
+    $ok
+    $error
+    $inval
+    $badf
+    $buflen
+    $unsupported
+    $badalign
+    $httpinvalid
+    $httpuser
+    $httpincomplete
+    $none))
+
+(typename $http_version
+  (enum (@witx tag u32)
+    $http_09
+    $http_10
+    $http_11
+    $h2
+    $h3))
+
+(typename $http_status u16)
+
+(typename $body_write_end
+  (enum (@witx tag u32)
+    $back
+    $front))
+
+(typename $body_handle (handle))
+(typename $request_handle (handle))
+(typename $response_handle (handle))
+(typename $pending_request_handle (handle))
+(typename $endpoint_handle (handle))
+(typename $dictionary_handle (handle))
+
+(typename $multi_value_cursor u32)
+;;; -1 represents "finished", non-negative represents a $multi_value_cursor:
+(typename $multi_value_cursor_result s64)
+
+(typename $cache_override_tag
+  (flags (@witx repr u32)
+    $none
+    $pass
+    $ttl
+    $stale_while_revalidate
+    $pci))
+(typename $num_bytes (@witx usize))
+(typename $header_count u32)
+(typename $is_done u32)
+(typename $done_idx u32)
+
