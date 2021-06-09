@@ -400,7 +400,7 @@
 
 (module $fastly_geo
     (@interface func (export "lookup")
-       (param $addr_octets (@witx pointer (@witx char8)))
+       (param $addr_octets (@witx const_pointer (@witx char8)))
        (param $addr_len (@witx usize))
        (param $buf (@witx pointer (@witx char8)))
        (param $buf_len (@witx usize))
