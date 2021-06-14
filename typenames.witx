@@ -46,7 +46,11 @@
     ;;
     ;; This status code is used to indicate when an optional value did not exist, as opposed to
     ;; an empty value.
-    $none))
+    $none
+    ;; Message head too large.
+    $httpheadtoolarge
+    ;; Invalid HTTP status.
+    $httpinvalidstatus))
 
 ;; A tag indicating HTTP protocol versions.
 (typename $http_version
