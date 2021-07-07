@@ -4,6 +4,7 @@ description = "Rust crate used to validate witx syntax"
 version = "0.1.0"
 authors = ["Fastly <oss@fastly.com>"]
 edition = "2018"
+publish = false
 
 [workspace]
 members = []
