@@ -292,6 +292,11 @@
                 (error $fastly_status))
         )
     )
+
+    (@interface func(export "close")
+        (param $h $request_handle)
+        (result $err (expected (error $fastly_status)))
+    )
 )
 
 (module $fastly_http_resp
@@ -386,6 +391,11 @@
     (@interface func (export "status_set")
         (param $h $response_handle)
         (param $status $http_status)
+        (result $err (expected (error $fastly_status)))
+    )
+
+    (@interface func(export "close")
+        (param $h $response_handle)
         (result $err (expected (error $fastly_status)))
     )
 )
