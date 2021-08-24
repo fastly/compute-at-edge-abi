@@ -87,6 +87,8 @@
 (typename $endpoint_handle (handle))
 ;;; A handle to an Edge Dictionary.
 (typename $dictionary_handle (handle))
+;;; A handle to a DNS lookup.
+(typename $dns_lookup_handle (handle))
 
 ;;; A "multi-value" cursor.
 (typename $multi_value_cursor u32)

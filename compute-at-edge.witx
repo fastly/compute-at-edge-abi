@@ -425,3 +425,57 @@
         (result $err (expected (error $fastly_status)))
     )
 )
+
+;;; DNS lookups.
+(module $fastly_dns
+    ;;; Lookup the IP addresses (IPv4 + IPv6) associated with a name.
+    ;;; Returns a handle to be consumed by lookup_wait().
+    (@interface func (export "lookup_addr")
+        (param $name string)
+        (result $err (expected $dns_lookup_handle (error $fastly_status)))
+    )
+
+    ;;; Lookup the names associated with an IP address.
+    ;;; Returns a handle to be consumed by lookup_wait().
+    (@interface func (export "lookup_reverse")
+        (param $ip string)
+        (result $err (expected $dns_lookup_handle (error $fastly_status)))
+    )
+
+    ;;; Lookup the TXT records associated with a name.
+    ;;; Returns a handle to be consumed by lookup_wait().
+    (@interface func (export "lookup_txt")
+        (param $name string)
+        (result $err (expected $dns_lookup_handle (error $fastly_status)))
+    )
+
+    ;;; Wait for a DNS lookup to complete.
+    ;;; Returns an array of byte strings.
+    (@interface func (export "lookup_wait")
+        (param $handle $dns_lookup_handle)
+        (param $buf (@witx pointer (@witx char8)))
+        (param $buf_len (@witx usize))
+        (param $cursor $multi_value_cursor)
+        (param $ending_cursor_out (@witx pointer $multi_value_cursor_result))
+        (param $nwritten_out (@witx pointer (@witx usize)))
+        (result $err (expected (error $fastly_status)))
+    )
+
+    ;;; Send a raw DNS query.
+    ;;; Returns a handle to be consumed by lookup_wait_raw().
+    (@interface func (export "lookup_raw")
+        (param $query (@witx const_pointer (@witx char8)))
+        (param $query_len (@witx usize))
+        (result $err (expected $dns_lookup_handle (error $fastly_status)))
+    )
+
+    ;;; Wait for a raw DNS response.
+    ;;; Returns a byte string.
+    (@interface func (export "lookup_wait_raw")
+        (param $handle $dns_lookup_handle)
+        (param $response (@witx pointer (@witx char8)))
+        (param $response_len (@witx usize))
+        (param $nwritten_out (@witx pointer (@witx usize)))
+        (result $err (expected (error $fastly_status)))
+    )
+)
