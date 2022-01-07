@@ -297,6 +297,12 @@
         (param $h $request_handle)
         (result $err (expected (error $fastly_status)))
     )
+
+    (@interface func (export "auto_decompress_response_set")
+        (param $h $request_handle)
+        (param $encodings $content_encodings)
+        (result $err (expected (error $fastly_status)))
+    )
 )
 
 (module $fastly_http_resp
