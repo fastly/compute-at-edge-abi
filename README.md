@@ -1,3 +1,9 @@
+# This repository is now archived
+
+The public ABI definition for Compute@Edge is now [contained _directly_ in the Viceroy repository](https://github.com/fastly/Viceroy/tree/main/lib/compute-at-edge-abi).
+
+----
+
 # 🔗 compute-at-edge-abi
 
 This repository contains `witx` definitions for the Compute@Edge platform ABI.
